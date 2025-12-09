@@ -1,0 +1,35 @@
+.wrap {
+  display: grid;
+  grid-template-rows: repeat(2, auto);
+  background-color: #dbf3f6;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 5px;
+  height: auto;
+  position: relative;
+}
+
+.name {
+  font-weight: bold;
+  font-size: 24px;
+  padding: 0 10px 0 10px;
+}
+
+.comment {
+  max-height: 500px;
+  width: 90%;
+  padding: 0 10px 0 10px;
+  overflow-wrap: break-word;
+  white-space: normal;
+  display: block;
+}
+
+img {
+  position: absolute;
+  left: 95%;
+  bottom: 45%;
+  width: 20px;
+  cursor: pointer;
+}
+
+/*# sourceMappingURL=comment.css.map */

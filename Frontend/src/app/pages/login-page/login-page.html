@@ -1,0 +1,14 @@
+<div class="main" >
+  <div class="block">
+    <router-outlet></router-outlet>
+  </div>
+
+  <div class="icon">
+    <img (click)="back()" src="assets/images/login.png" alt="icon">
+  </div>
+
+  <div class="alert">
+    {{ errorMessage }}
+  </div>
+
+</div>

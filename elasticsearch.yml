@@ -1,0 +1,23 @@
+# Имя кластера
+cluster.name: my-cluster
+
+# Имя ноды
+node.name: node-01
+
+# Разрешаем привязку к любому интерфейсу
+network.host: 0.0.0.0
+
+# Порт HTTP (REST API)
+http.port: 9200
+
+
+
+# Включаем TLS для внутреннего транспорта (между нодами)
+#xpack.security.transport.ssl:
+#  enabled: true
+#  verification_mode: certificate
+#  certificate: /usr/share/elasticsearch/config/certs/main_node/main_node.crt
+ # key: /usr/share/elasticsearch/config/certs/main_node/main_node.key
+
+# Для single-node кластера
+discovery.type: single-node

@@ -1,0 +1,15 @@
+@if(comment){
+  <div class="wrap">
+    <div class="name">
+      {{ comment.username }}
+      @if(admin || id == comment.userId){
+        <div class="trash">
+          <img src="assets/images/trash.png" alt="" (click)="deleteComment()">
+        </div>
+      }
+    </div>
+    <div class="comment">
+      {{ comment.comment }}
+    </div>
+  </div>
+}

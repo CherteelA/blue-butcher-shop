@@ -1,0 +1,35 @@
+<header>
+  <nav class="nav-bar">
+    <div class="icon">
+      <img class="icon-img" src="assets/images/icon.png" (click)="backPage()">
+    </div>
+    <div class="search-field">
+      <input [(ngModel)]="query" (keyup.enter)="search()" type="text" placeholder="Искать на BLUEBUTCHER">
+    </div>
+    <div class="find-button">
+      <button (click)="search()">НАЙТИ</button>
+    </div>
+
+    <div class="navigation">
+        <div class="likes nav-icon" (click)="favorites()">
+          <img class="heart-img" src="assets/images/heart.png">
+          <div>избранное</div>
+        </div>
+        <div class="basket nav-icon" (click)="basket()">
+         <img class="basket-img" src="assets/images/basket.png">
+          <div>корзина</div>
+        </div>
+        <div class="profile nav-icon" (click)="move()">
+          <img class="profile-img" src="assets/images/profile.png">
+          <div class="username">
+            @if (auth.user!=null){
+              {{ auth.user.username }}
+            }
+            @else{
+              профиль
+            }
+          </div>
+        </div>
+    </div>
+  </nav>
+</header>

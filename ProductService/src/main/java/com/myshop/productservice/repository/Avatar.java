@@ -1,0 +1,33 @@
+package com.myshop.productservice.repository;
+
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.springframework.data.redis.core.RedisHash;
+
+
+import java.util.UUID;
+
+
+@Entity
+@Table(name = "avatar")
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class Avatar{
+
+    @Id
+    private UUID id;
+
+    @NotNull
+    private String url;
+
+    @OneToOne
+    @JoinColumn(name = "productid")
+    @JsonBackReference
+    private Product product;
+}

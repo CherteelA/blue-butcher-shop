@@ -1,0 +1,14 @@
+
+
+elasticsearch:
+  host: ${ELASTIC_HOST}
+  port: ${ELASTIC_PORT}
+  username: ${name_to_elastic}
+  password: ${password_to_elastic}
+
+server:
+  port: 8081
+
+spring:
+  kafka:
+    bootstrap-servers: ${KAFKA_SERVER}

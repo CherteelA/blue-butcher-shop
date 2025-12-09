@@ -1,0 +1,18 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div class="enter">Вход</div>
+  <div class="email">
+    <input type="text" placeholder="email" formControlName="email">
+  </div>
+
+  <div class="password">
+    <input type="password" placeholder="password" formControlName="password">
+  </div>
+
+  <div class="but">
+    <button type="submit">Вход</button>
+  </div>
+
+  <div class="sign-in">
+    <div class="text" (click)="goToSignUp()">Зарегистрироваться</div>
+  </div>
+</form>

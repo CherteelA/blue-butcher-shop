@@ -1,0 +1,20 @@
+spring:
+  datasource:
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+    url: ${DB_URL}
+
+
+
+
+
+server:
+  port: 8444
+
+
+
+app:
+  jwt:
+    refresh-token-expiration: 604800000
+    expiration: 900000
+

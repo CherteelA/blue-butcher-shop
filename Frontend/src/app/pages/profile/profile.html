@@ -1,0 +1,66 @@
+
+
+<div class="main">
+  <div class="field">
+    <app-search-field [searchText]="local_query"></app-search-field>
+  </div>
+  <div class="body">
+    <div class="profile">
+      <img src="assets/images/profile-icon.png" alt="">
+      <div class="name">{{ auth.user!.username }}</div>
+
+      <form [formGroup]="form1" class="change" (ngSubmit)="onSubmit1()">
+        <div class="heder">
+          <div class="title" (click)="active(0)">Сменить имя</div>
+          @if (isActive[0]==1){
+            <button type="submit">Ok</button>
+          }
+        </div>
+        @if (isActive[0]==1){
+          <input type="text" placeholder="email" formControlName="email">
+          <input type="password" placeholder="password" formControlName="password">
+          <input type="text" placeholder="new name" maxlength="15" formControlName="name">
+        }
+      </form>
+
+      <form [formGroup]="form2" class="change" (ngSubmit)="onSubmit2()">
+        <div class="heder">
+          <div class="title" (click)="active(1)">Сменить пароль</div>
+          @if (isActive[1]==1){
+            <button type="submit">Ok</button>
+          }
+        </div>
+        @if (isActive[1]==1){
+          <input type="text" placeholder="email" formControlName="email">
+          <input type="password" placeholder="password" formControlName="password">
+          <input type="password" placeholder="new password" formControlName="new_password1">
+          <input type="password" placeholder="repeat password" formControlName="new_password2">
+        }
+      </form>
+
+      <form [formGroup]="form3" class="change" (ngSubmit)="onSubmit3()">
+        <div class="heder">
+          <div class="title" (click)="active(2)">Сменить email</div>
+          @if (isActive[2]==1){
+            <button type="submit">Ok</button>
+          }
+        </div>
+        @if (isActive[2]==1){
+          <input type="text" placeholder="email" formControlName="email">
+          <input type="password" placeholder="password" formControlName="password">
+          <input type="text" placeholder="new email" formControlName="new_email">
+        }
+      </form>
+    </div>
+    <div class="second">
+
+      <img class="exit" src="assets/images/logout.png" alt="" (click)="exit()">
+      <app-create-product></app-create-product>
+    </div>
+  </div>
+</div>
+@if(showMessage){
+  <div class="message">
+    {{ message }}
+  </div>
+}

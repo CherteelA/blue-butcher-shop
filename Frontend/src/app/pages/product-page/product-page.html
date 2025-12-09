@@ -1,0 +1,173 @@
+<div class="field">
+  <app-search-field [searchText]="local_query"></app-search-field>
+</div>
+
+
+@if(data){
+  <div class="information">
+    <div class="image-holder">
+      <img src="{{ url }}" alt="">
+    </div>
+    <div class="wrap">
+      <h2>{{ data.name }}</h2>
+      <div class="mark-and-review">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="star" viewBox="0 0 16 16">
+            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+          </svg>
+          {{ data.rating % 1 === 0 ? (data.rating | number:'1.0-0') : (data.rating | number:'1.1-1') }}/5
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="cloud" viewBox="0 0 16 16">
+            <path d="M8 15c4.418 0 8-3.134 8-7s-3.582-7-8-7-8 3.134-8 7c0 1.76.743 3.37 1.97 4.6-.097 1.016-.417 2.13-.771 2.966-.079.186.074.394.273.362 2.256-.37 3.597-.938 4.18-1.234A9 9 0 0 0 8 15"/>
+          </svg>
+          {{ data.countComments }}
+          отзывов
+        </div>
+      </div>
+      <div>
+        <p>Артикул {{ data.article }}</p>
+      </div>
+
+      <div class="description">
+        <div class="title">
+          <h2>Описание</h2>
+        </div>
+        <div class="description-body">   {{ data.description }} </div>
+
+      </div>
+
+    </div>
+
+    <div class="wrap">
+      @if(canEdit){
+        <div class="trash">
+          <img src="assets/images/trash.png" alt="" (click)="deleteProduct()">
+        </div>
+      }
+      <p class="price">{{ data.price }} ₽</p>
+      <div class="buttons">
+        <button class="cart-button" (click)="buyProduct()">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="cart" viewBox="0 0 16 16">
+            <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
+          </svg>
+          В корзину
+        </button>
+        <button class="heard-button" (click)="setFavorites()">
+          @if(isFavorite){
+            <img src="assets/images/heart-favorite-field.png" alt="" class="heart">
+          } @else {
+            <img src="assets/images/heart-favorite.png" alt="" class="heart">
+          }
+
+        </button>
+      </div>
+      @if(auth.user){
+        <div class="stars">
+
+          @if(rating > 0){
+            <img src="assets/images/star-filled.png" alt="" (click)="star(1)">
+          }
+          @if(rating > 1){
+            <img src="assets/images/star-filled.png" alt="" (click)="star(2)">
+          }
+          @if(rating > 2){
+            <img src="assets/images/star-filled.png" alt="" (click)="star(3)">
+          }
+          @if(rating > 3){
+            <img src="assets/images/star-filled.png" alt="" (click)="star(4)">
+          }
+          @if(rating > 4){
+            <img src="assets/images/star-filled.png" alt="" (click)="star(5)">
+          }
+
+
+
+          @if(rating < 1){
+            <img src="assets/images/star.png" alt="" (click)="star(1)">
+          }
+
+          @if(rating < 2){
+            <img src="assets/images/star.png" alt="" (click)="star(2)">
+          }
+
+          @if(rating < 3){
+            <img src="assets/images/star.png" alt="" (click)="star(3)">
+          }
+          @if(rating < 4){
+            <img src="assets/images/star.png" alt="" (click)="star(4)">
+          }
+          @if(rating < 5){
+            <img src="assets/images/star.png" alt="" (click)="star(5)">
+          }
+
+        </div>
+      }
+    </div>
+  </div>
+
+  <div class="dopInfo">
+    <div class="miniPhotos">
+      @if(urlAvatar){
+        <img src="{{ urlAvatar }}" alt="" class="mini-avatar mini-photo" (click)="changePhoto(urlAvatar)">
+      }
+      @if(photosUrl){
+        @for(urlMiniPhoto of photosUrl; track urlMiniPhoto.id){
+          <app-mini-photo class="mini-photo" (click)="changePhoto(urlMiniPhoto.url)"
+          [url]="urlMiniPhoto.url"
+          ></app-mini-photo>
+        }
+      }
+    </div>
+    <div class="comments-block">
+
+      @if(auth.user){
+      <div class="newComment">
+        <div class="name">{{ auth.user.username }}</div>
+        <div class="new-com-field">
+          <textarea placeholder="Комментарий" maxlength="1000" [(ngModel)]="comment" autoResize></textarea>
+        </div>
+        <div class="but">
+          <button class="send-comm-but" (click)="sendComment()">ОТПРАВИТЬ</button>
+        </div>
+
+      </div>
+      }
+      @if(displayedComments){
+        <div class="comments">
+          @for(com of displayedComments; track com.id){
+            <app-comment
+              [comment]="com"
+              [admin]="admin"
+              [id]="auth.user?.id"
+            ></app-comment>
+          }
+        </div>
+      }
+      @if(maxComm < this.comments.length){
+      <div class="showMore" (click)="showMore()">
+        Далее
+      </div>
+      }
+
+    </div>
+  </div>
+
+}@else {
+  <div class="products-not-found">
+    <div>
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="cart-not-found" viewBox="0 0 16 16">
+        <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
+      </svg>
+    </div>
+    <div>
+      <p>По вашему запросу ничего не найдено</p>
+      <p class="back" (click)="backPage()">Вернуться на главную</p>
+    </div>
+  </div>
+}
+@if(showMessage){
+  <div class="message">
+    {{ message }}
+  </div>
+}

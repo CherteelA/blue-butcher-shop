@@ -1,0 +1,103 @@
+.main {
+  background: #101010;
+  min-height: 100vh;
+}
+
+.body {
+  padding-left: 20px;
+  padding-top: 20px;
+  min-height: 100vh;
+  width: 1250px;
+  margin: 88px 18% 0 18%;
+  background: #636363;
+  display: grid;
+  grid-template-rows: auto auto;
+  justify-items: center;
+}
+
+.wrap {
+  display: grid;
+  grid-template-columns: repeat(4, 270px);
+  column-gap: 50px;
+  row-gap: 20px;
+  width: 100%;
+}
+
+.products-not-found {
+  position: relative;
+  top: 200px;
+  left: 300px;
+  background-color: #b3b3b3;
+  display: inline-grid;
+  grid-template-columns: 2fr 7fr;
+  padding: 16px;
+  margin: 0;
+  border-radius: 12px;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
+
+.cart {
+  width: 50%;
+  height: 50%;
+  fill: #333333;
+}
+
+.field {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #9a9a9a;
+  z-index: 1000;
+  padding: 10px;
+}
+
+.card {
+  cursor: pointer;
+}
+
+.bot {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  justify-content: center;
+  width: 100px;
+  column-gap: 10px;
+  align-content: center;
+  height: 60px;
+}
+
+img {
+  width: 30px;
+  display: grid;
+  align-content: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.value {
+  display: grid;
+  align-content: center;
+}
+
+.value input {
+  width: 20px;
+  border-radius: 3px;
+  border: none;
+  text-align: center;
+}
+
+.value input:focus {
+  outline: none;
+}
+
+.back {
+  cursor: pointer;
+  width: 155px;
+  display: grid;
+  justify-self: center;
+}
+
+/*# sourceMappingURL=search-page.css.map */

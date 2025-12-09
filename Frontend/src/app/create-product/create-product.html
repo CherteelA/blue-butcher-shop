@@ -1,0 +1,57 @@
+<div class="wrap" >
+  <h1>Заполните поля для создания своего товара</h1>
+  <div class="for-grid">
+    <div class="image-uploader">
+      @if(current_img != ''){
+        <img src="{{ current_img }}" alt="">
+      } @else {
+        <img src="assets/images/defaultPhoto.png" alt="">
+      }
+
+      <div class="inp-img">
+        <h3>Введите ссылку на фотографию</h3>
+        <input type="text" placeholder="https://..." [(ngModel)]="current_img">
+        <button (click)="save_photo()">
+          Загрузить фото
+        </button>
+      </div>
+    </div>
+    <form class="info" [formGroup]="createProductForm" (ngSubmit)="onSubmit()">
+      <div class="name">
+        <h3>Наименование</h3>
+        <input type="text" maxlength="60" formControlName="name">
+      </div>
+      <div class="price-article-quantity">
+        <div class="price">
+          <h3>Цена</h3>
+          <input type="text" placeholder="" maxlength="10" formControlName="price">
+        </div>
+        <div class="article">
+          <h3>Артикул</h3>
+          <input type="text" placeholder="" maxlength="15" formControlName="article">
+        </div>
+        <div class="quantity">
+          <h3>Кол-во</h3>
+          <input type="text" placeholder="" maxlength="10" formControlName="count">
+        </div>
+      </div>
+      <div class="description">
+        <h3>Описание товара</h3>
+        <textarea maxlength="1000" class="text" formControlName="description"></textarea>
+      </div>
+      <div class="butt-container">
+        <button type="submit">
+          Создать товар
+        </button>
+      </div>
+    </form>
+  </div>
+
+
+</div>
+
+@if(showMessage){
+  <div class="message">
+    {{ message }}
+  </div>
+}

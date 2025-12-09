@@ -1,0 +1,28 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <div class="reg">Регистрация</div>
+
+  <div>
+    <input type="text" placeholder="username" formControlName="username" maxlength="15">
+  </div>
+
+  <div>
+    <input type="text" placeholder="email" formControlName="email">
+  </div>
+
+  <div>
+    <input type="password" placeholder="password" formControlName="password" >
+  </div>
+
+  <div>
+    <input type="password" placeholder="repeat password" formControlName="passwordRepeat">
+  </div>
+
+  <div class="but">
+    <button type="submit">Создать аккаунт</button>
+  </div>
+
+  <div class="sign-in">
+    <div class="text" (click)="goToSignIn()">Войти</div>
+  </div>
+</form>
+

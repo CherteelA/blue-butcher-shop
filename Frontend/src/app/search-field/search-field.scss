@@ -1,0 +1,142 @@
+
+
+
+.nav-bar{
+  display: grid;
+  grid-template-columns: auto 40% auto auto auto auto;
+  height: 80px;
+  width: 90%;
+  position: relative;
+  left: 5%;
+
+
+  align-items: center;
+}
+
+
+
+
+
+.search-field {
+  width: 100%;
+  height: 40%;
+}
+
+
+input:focus{
+  outline:none;
+}
+
+
+.search-field input {
+  width: 100%;
+  height: 80%;
+  font-size: 16px;
+  background-color: rgb(209, 208, 208);
+  border: none;
+  border-radius: 5px;
+  padding: 2px;
+}
+
+
+.find-button{
+  margin-left: 10px;
+  width: 90px;
+  height: 65%;
+}
+
+.find-button button{
+  position: relative;
+  top: 21%;
+  height:50%;
+  width: 80%;
+  border-radius: 5px;
+  background-color: rgb(0, 144, 255);
+  font-weight: bold;
+}
+
+.icon-img{
+  width: 70%;
+  height: 80%;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.icon{
+  display: flex;
+  width: 400px;
+  justify-content: end;
+}
+
+
+.navigation{
+
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+
+.heart-img{
+
+  max-width: 40%;
+  width: 40%;
+  min-width: 40%;
+}
+
+.basket-img{
+
+  max-width: 40%;
+  width: 40%;
+  min-width: 40%;
+}
+
+.profile-img{
+  max-width: 40%;
+  min-width: 40%;
+  width: 40%;
+
+}
+
+.nav-icon{
+  display: grid;
+  justify-items: center;
+  cursor: pointer;
+}
+
+.profile{
+  width: 80px;
+  max-width: 80px;
+  min-width: 80px;
+}
+
+.basket{
+  width: 80px;
+  max-width: 80px;
+  min-width: 80px;
+}
+
+.likes{
+  width: 80px;
+  max-width: 80px;
+  min-width: 80px;
+}
+
+.button-nav{
+  padding: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.username {
+  max-width: 80px;
+  overflow: hidden; /* Скрывает переполнение */
+  text-overflow: ellipsis; /* Добавляет "..." в конце, если текст длиннее */
+  white-space: nowrap; /* Запрещает перенос строк */
+}
+
+.find-button button{
+  cursor: pointer;
+}
+

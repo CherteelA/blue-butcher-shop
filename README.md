@@ -69,4 +69,4 @@ cd blue-butcher-shop
 ```bash
 docker-compose up -d --build
 ```
-**Автор: Ситникво Алексей**
+**Автор: Ситников Алексей**
